@@ -1,4 +1,4 @@
-# Oni - Chatbot de Mitologia Japonesa
+# Oni 
 
 Oni é uma aplicação web interativa que apresenta dois espíritos da mitologia japonesa através de chatbots com personalidades distintas. O projeto explora a dualidade entre luz e sombra, sabedoria e mistério, através de narrativas autênticas do folclore japonês.
 
