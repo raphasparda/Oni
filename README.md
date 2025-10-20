@@ -134,19 +134,6 @@ interface ConversationContext {
 }
 \`\`\`
 
-## Contribuição
-
-Este é um projeto educacional focado em explorar mitologia japonesa através de tecnologia moderna. Contribuições são bem-vindas, especialmente:
-
-- Novas histórias autênticas da mitologia japonesa
-- Melhorias no sistema de Micro IA
-- Aprimoramentos na interface do usuário
-- Correções de bugs e otimizações
-
-## Licença
-
-Este projeto é de código aberto e está disponível sob a licença MIT.
-
 ## Autor
 
 Desenvolvido por Raphael Sparda
