@@ -18,18 +18,18 @@ O projeto é baseado na filosofia do Yin-Yang, representando dois aspectos compl
 - React 19 com Server Components
 - TypeScript com strict mode
 - Tailwind CSS v4 para estilização
-- Sistema de Micro IA proprietário para processamento de linguagem natural
+- Motor conversacional autoral desenvolvido especificamente para o projeto
 
-### Sistema de Micro IA
+### Motor Conversacional
 
-O projeto implementa um sistema de inteligência artificial customizado que não depende de APIs externas pagas. A Micro IA inclui:
+O comportamento dos bots é totalmente autoral: não há dependência de modelos externos ou serviços de terceiros. O motor foi escrito na mão para atender ao tema do Oni e conta com:
 
-- Análise de intenção com detecção de nuances conversacionais
-- Análise de sentimento com categorização emocional avançada
-- Extração de tópicos baseada em palavras-chave contextuais
-- Memória conversacional com rastreamento de histórico emocional
-- Geração de respostas personalizadas baseadas em personalidade
-- Sistema de contexto que mantém coerência entre mensagens
+- Regras de intenção que interpretam cumprimentos, pedidos de histórias e estados emocionais
+- Análise de sentimento simples baseada em palavras-chave
+- Extração de tópicos construída à mão para casar com os temas disponíveis
+- Memória conversacional local que mantém o contexto recente
+- Respostas cuidadosamente roteirizadas para cada persona
+- Controle de fluxo que mantém coerência entre as mensagens
 
 ### Banco de Histórias
 
