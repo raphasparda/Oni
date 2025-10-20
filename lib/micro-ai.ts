@@ -1,4 +1,4 @@
-// Sistema de Micro IA para processamento de linguagem natural
+// Motor conversacional autoral para processamento de linguagem natural
 // Analisa intenções, sentimentos e contexto para gerar respostas personalizadas
 
 export interface ConversationContext {
@@ -14,7 +14,7 @@ export interface ConversationContext {
   emotionalJourney: Array<{ mood: string; timestamp: number }> // Jornada emocional do usuário
 }
 
-export interface AIPersonality {
+export interface PersonaProfile {
   name: string
   traits: string[]
   responseStyle: "wise" | "mysterious" | "dark" | "gentle"
@@ -267,10 +267,10 @@ export function extractTopicsFromStories(
 
 // Gerador de respostas contextual
 export class MicroAI {
-  private personality: AIPersonality
+  private personality: PersonaProfile
   private context: ConversationContext
 
-  constructor(personality: AIPersonality) {
+  constructor(personality: PersonaProfile) {
     this.personality = personality
     this.context = {
       messages: [],
@@ -591,7 +591,7 @@ export class MicroAI {
 }
 
 // Personalidades pré-definidas
-export const kitsunePersonality: AIPersonality = {
+export const kitsunePersonality: PersonaProfile = {
   name: "Kitsune",
   traits: ["benevolente", "sábio", "paciente", "poético", "otimista", "respeitoso", "misterioso"],
   responseStyle: "wise",
@@ -639,7 +639,7 @@ export const kitsunePersonality: AIPersonality = {
   },
 }
 
-export const bakenekoPersonality: AIPersonality = {
+export const bakenekoPersonality: PersonaProfile = {
   name: "Bakeneko",
   traits: ["sombrio", "enigmático", "sedutoramente perigoso", "astuto", "cético", "humor negro"],
   responseStyle: "dark",
