@@ -1,9 +1,17 @@
 ﻿"use client"
 
-import { useEffect, useMemo } from "react"
+import { Suspense, useEffect, useMemo } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 
 export default function LoadingPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <LoadingContent />
+    </Suspense>
+  )
+}
+
+function LoadingContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const botKey = (searchParams.get("bot") ?? "kitsune").toLowerCase()
@@ -18,12 +26,13 @@ export default function LoadingPage() {
     }
   }, [botKey, router])
 
-  const message = useMemo(() => {
-    if (botKey === "bakeneko") {
-      return "Abrindo o portal entre sombras e segredos..."
-    }
-    return "Acendendo lanternas e invocando as histórias ancestrais..."
-  }, [botKey])
+  const message = useMemo(
+    () =>
+      botKey === "bakeneko"
+        ? "Abrindo o portal entre sombras e segredos..."
+        : "Acendendo lanternas e invocando as historias ancestrais...",
+    [botKey],
+  )
 
   const isBakeneko = botKey === "bakeneko"
 
@@ -48,8 +57,12 @@ export default function LoadingPage() {
 
       <div className="loading-wrapper" role="status" aria-live="polite">
         <img
-          src={isBakeneko ? "https://raw.githubusercontent.com/raphasparda/midia/main/yang.svg" : "https://raw.githubusercontent.com/raphasparda/midia/main/ying.svg"}
-          alt="Símbolo yin yang"
+          src={
+            isBakeneko
+              ? "https://raw.githubusercontent.com/raphasparda/midia/main/yang.svg"
+              : "https://raw.githubusercontent.com/raphasparda/midia/main/ying.svg"
+          }
+          alt="Simbolo yin yang"
           className="yin-yang"
         />
 
@@ -90,5 +103,13 @@ export default function LoadingPage() {
         }
       `}</style>
     </>
+  )
+}
+
+function LoadingFallback() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-black text-white">
+      <span className="animate-pulse tracking-[0.35em] uppercase text-sm opacity-80">Carregando...</span>
+    </div>
   )
 }
