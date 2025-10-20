@@ -49,32 +49,6 @@ As coleções foram reescritas manualmente para combinar com as personalidades d
 
 Cada história inclui título, narrativa completa, moral e palavras-chave para seleção contextual.
 
-## Estrutura do Projeto
-
-\`\`\`
-oni-chatbot/
-├── app/
-│   ├── api/
-│   │   └── chat/
-│   │       └── route.ts          # API route para processamento de mensagens
-│   ├── chat/
-│   │   └── page.tsx               # Página de chat dinâmica
-│   ├── layout.tsx                 # Layout raiz com fontes
-│   ├── page.tsx                   # Página inicial split-screen
-│   └── globals.css                # Estilos globais e design tokens
-├── components/
-│   └── oni-chat.tsx               # Componente principal do chat
-├── lib/
-│   ├── micro-ai.ts                # Sistema de Micro IA
-│   ├── kitsune-stories.ts         # Banco de histórias do Kitsune
-│   ├── kitsune-conversation.ts    # Sistema conversacional do Kitsune
-│   ├── kitsune-system-prompt.ts   # Prompt de sistema do Kitsune
-│   ├── bakeneko-stories.ts        # Banco de histórias do Bakeneko
-│   ├── bakeneko-conversation.ts   # Sistema conversacional do Bakeneko
-│   └── bakeneko-system-prompt.ts  # Prompt de sistema do Bakeneko
-└── public/
-    └── images/                    # Ícones dos espíritos
-\`\`\`
 
 ## Identidade Visual
 
@@ -117,41 +91,6 @@ Cada bot possui personalidade única implementada através de:
 - Tom de voz apropriado ao personagem
 - Estrutura de resposta consistente
 - Estilo conversacional distinto
-
-## Instalação e Execução
-
-### Requisitos
-
-- Node.js 18 ou superior
-- pnpm (gerenciador de pacotes)
-
-### Instalação
-
-\`\`\`bash
-# Clone o repositório
-git clone [url-do-repositorio]
-
-# Entre no diretório
-cd oni-chatbot
-
-# Instale as dependências
-pnpm install
-\`\`\`
-
-### Execução em Desenvolvimento
-
-\`\`\`bash
-pnpm dev
-\`\`\`
-
-A aplicação estará disponível em `http://localhost:3000`
-
-### Build para Produção
-
-\`\`\`bash
-pnpm build
-pnpm start
-\`\`\`
 
 ## Tecnologias Utilizadas
 
@@ -210,8 +149,5 @@ Este projeto é de código aberto e está disponível sob a licença MIT.
 
 ## Autor
 
-Desenvolvido como um projeto de exploração cultural e tecnológica da mitologia japonesa.
+Desenvolvido por Raphael Sparda
 
-## Agradecimentos
-
-As histórias apresentadas são baseadas em lendas e folclore autênticos do Japão, adaptadas para o formato conversacional. Agradecimentos aos contadores de histórias ancestrais que preservaram essas narrativas através dos séculos.
