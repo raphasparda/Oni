@@ -1,140 +1,121 @@
-# Oni 
+# Oni
 
-Oni é uma aplicação web interativa que apresenta dois espíritos da mitologia japonesa através de chatbots com personalidades distintas. O projeto explora a dualidade entre luz e sombra, sabedoria e mistério, através de narrativas autênticas do folclore japonês.
+Dois espíritos da mitologia japonesa conversam com você. **Oni** é uma aplicação web onde cada um desses espíritos tem voz, humor e memória próprios. A ideia é simples: colocar lado a lado luz e sombra, sabedoria e mistério, sem caricatura — só boas histórias.
 
 ## Conceito
 
-O projeto é baseado na filosofia do Yin-Yang, representando dois aspectos complementares da mitologia japonesa:
+A base é o **Yin–Yang**: forças diferentes que se completam.
 
-**Kitsune** - O espírito raposa milenar, guardião da sabedoria, iluminação e esperança. Representa a luz, o conhecimento ancestral e a beleza da vida. Suas histórias inspiram, iluminam e infundem esperança através de narrativas sobre amor, coragem, transformação e a natureza sagrada da existência.
+**Kitsune (luz)**
+Raposa milenar, paciente e curiosa. Fala de amor, coragem, transformação e beleza nas pequenas coisas. As histórias soam como lendas contadas à luz de lanternas, com aquele calor de fogueira que anima a alma.
 
-**Bakeneko** - O espírito gato monstro, guardião dos segredos sombrios e das lendas que causam calafrios. Representa as sombras, o desconhecido e os mistérios ocultos. Suas histórias revelam o lado macabro da mitologia japonesa, explorando yokai, maldições ancestrais e segredos que desafiam a sanidade.
+**Bakeneko (sombra)**
+Gato-monstro de olhar irônico. Prefere segredos, maldições e encontros com **yokai**. Suas narrativas provocam arrepio sem perder o sarcasmo felino.
 
-## Características Técnicas
+## Por trás da tela
 
-### Arquitetura
+O projeto roda em **Next.js 15.2.4** (App Router) com **React 19** (Server Components), **TypeScript** em *strict mode* e **Tailwind CSS v4**. A tipografia usa **Geist** e os componentes são do **shadcn/ui**.
 
-- Next.js 15.2.4 com App Router
-- React 19 com Server Components
-- TypeScript com strict mode
-- Tailwind CSS v4 para estilização
-- Motor conversacional autoral desenvolvido especificamente para o projeto
+A inteligência que move a conversa é uma **Micro IA própria** — leve, sem dependências de APIs pagas — feita para dar personalidade real aos bots. Ela cuida de:
 
-### Motor Conversacional
+* entender intenção (com nuances de linguagem);
+* analisar sentimento e classificar emoções;
+* extrair tópicos de forma contextual;
+* manter uma **memória conversacional** (incluindo trilha emocional ao longo do tempo);
+* gerar respostas coerentes com a **personalidade** de cada espírito;
+* preservar o contexto entre mensagens.
 
-O comportamento dos bots é totalmente autoral: não há dependência de modelos externos ou serviços de terceiros. O motor foi escrito na mão para atender ao tema do Oni e conta com:
+## Banco de histórias
 
-- Regras de intenção que interpretam cumprimentos, pedidos de histórias e estados emocionais
-- Análise de sentimento simples baseada em palavras-chave
-- Extração de tópicos construída à mão para casar com os temas disponíveis
-- Memória conversacional local que mantém o contexto recente
-- Respostas cuidadosamente roteirizadas para cada persona
-- Controle de fluxo que mantém coerência entre as mensagens
+As coleções são originais e foram reescritas à mão para combinar com a voz de cada bot.
 
-### Banco de Histórias
+* **Kitsune** conta fábulas sensoriais sobre amor, esperança, amizade, família, verdade, prosperidade, natureza, confiança, sorte e a celebração da vida.
+* **Bakeneko** narra horror psicológico, vingança, maldições e encontros com **yokai**, buscando aquele desconforto gostoso que prende a leitura.
 
-- A Kitsune agora conta contos originais e sensoriais que abordam amor, esperança, coragem, sabedoria, amizade, família, verdade, prosperidade, natureza, confiança, sorte e celebração da vida. Cada narrativa foi escrita para soar como uma lenda compartilhada à luz de lanternas.
-- O Bakeneko narra histórias inéditas de horror psicológico, vingança, maldições e encontros com yokai. Os relatos são construídos para provocar desconforto e suspense, mantendo o tom felino e mordaz do narrador.
+Cada história tem **título**, **narrativa completa**, **moral** e **palavras‑chave** para seleção contextual.
 
-As coleções foram reescritas manualmente para combinar com as personalidades dos bots e reagir melhor às intenções dos usuários.
+## Conversa e seleção de histórias
 
-### Scripts e Automatizações
+Os bots reconhecem cumprimentos e despedidas, entendem perguntas, percebem incerteza e respondem com empatia. Eles mantêm contexto entre mensagens e adaptam o tom ao histórico emocional do usuário.
 
-- `py scripts/restore_accents.py <arquivo ...>` — percorre literais de texto em português e restaura diacríticos com base em frequência de uso. Útil ao adicionar novas histórias.
+Quando escolhem uma história, o sistema considera:
 
-### Testes
+* palavras‑chave da mensagem;
+* sentimento e emoção expressos;
+* o que já foi conversado antes;
+* tópicos recorrentes;
+* o estado emocional atual do usuário.
 
-- `npm run test -- --run tests/topic-detection.test.ts` — garante que a detecção de temas e o redirecionamento Kitsune/Bakeneko respondem corretamente a palavras-chave e sinônimos comuns.
-- Configurei novos testes unitários com Vitest para reforçar o comportamento da classificação temática sem depender do runtime do Next.js.
+## Visual
 
-Cada história inclui título, narrativa completa, moral e palavras-chave para seleção contextual.
+Identidade minimalista com três cores:
 
+* **Branco**: luz e sabedoria (Kitsune)
+* **Preto**: sombras e mistério (Bakeneko)
+* **Vermelho**: o fio que conecta os dois
 
-## Identidade Visual
+A *home* tem layout **split‑screen** vertical: lado esquerdo branco (Kitsune), lado direito preto (Bakeneko), separados por uma linha vermelha.
 
-O projeto utiliza uma paleta de cores minimalista baseada em três cores:
+## Scripts e testes
 
-- Branco - Representa a luz e sabedoria do Kitsune
-- Preto - Representa as sombras e mistérios do Bakeneko
-- Vermelho - Cor de destaque que conecta ambos os espíritos
+**Restauração de acentos**
 
-A página inicial apresenta um design split-screen com divisão vertical, onde o lado esquerdo é totalmente branco para o Kitsune e o lado direito é totalmente preto para o Bakeneko, separados por uma linha vermelha.
+```bash
+python scripts/restore_accents.py <arquivo...>
+```
 
-## Funcionalidades
+Percorre literais em português e restaura diacríticos com base em frequência de uso — útil ao adicionar novas histórias.
 
-### Conversação Natural
+**Teste de detecção de temas**
 
-Os bots conseguem:
+```bash
+npm run test -- --run tests/topic-detection.test.ts
+```
 
-- Reconhecer e responder a cumprimentos e despedidas
-- Detectar emoções e responder com empatia
-- Entender perguntas e oferecer histórias relevantes
-- Reconhecer incerteza e oferecer orientação
-- Manter contexto conversacional entre mensagens
-- Adaptar respostas baseadas no histórico emocional do usuário
+Garante que a classificação temática e o roteamento Kitsune/Bakeneko funcionem com palavras‑chave e sinônimos. Os testes (Vitest) rodam sem depender do runtime do Next.js.
 
-### Seleção Inteligente de Histórias
+## Tecnologias
 
-O sistema seleciona histórias baseado em:
+* Next.js 15.2.4
+* React 19
+* TypeScript 5
+* Tailwind CSS v4
+* Geist Font Family
+* shadcn/ui
 
-- Palavras-chave detectadas na mensagem do usuário
-- Sentimento e emoção expressos
-- Contexto da conversa anterior
-- Tópicos discutidos previamente
-- Estado emocional do usuário
+## Modelos de dados
 
-### Personalidades Distintas
+**Interface `Story`**
 
-Cada bot possui personalidade única implementada através de:
-
-- Vocabulário específico com frases características
-- Tom de voz apropriado ao personagem
-- Estrutura de resposta consistente
-- Estilo conversacional distinto
-
-## Tecnologias Utilizadas
-
-- Next.js 15.2.4
-- React 19
-- TypeScript 5
-- Tailwind CSS v4
-- Geist Font Family
-- shadcn/ui components
-
-## Estrutura de Dados
-
-### Interface Story
-
-\`\`\`typescript
+```typescript
 interface Story {
-  id: string
-  theme: string
-  title: string
-  summary: string
-  moral: string
-  story: string
-  keywords: string[]
+  id: string;
+  theme: string;
+  title: string;
+  summary: string;
+  moral: string;
+  story: string;
+  keywords: string[];
 }
-\`\`\`
+```
 
-### Interface ConversationContext
+**Interface `ConversationContext`**
 
-\`\`\`typescript
+```typescript
 interface ConversationContext {
-  messages: Array<{ role: "user" | "assistant"; content: string }>
-  currentTopic?: string
-  userMood?: string
-  storyPreference?: string[]
-  lastBotAction?: string
-  waitingForResponse?: boolean
-  offeredStoryTitle?: string
-  conversationDepth: number
-  topicHistory: string[]
-  emotionalJourney: Array<{ mood: string; timestamp: number }>
+  messages: Array<{ role: "user" | "assistant"; content: string }>;
+  currentTopic?: string;
+  userMood?: string;
+  storyPreference?: string[];
+  lastBotAction?: string;
+  waitingForResponse?: boolean;
+  offeredStoryTitle?: string;
+  conversationDepth: number;
+  topicHistory: string[];
+  emotionalJourney: Array<{ mood: string; timestamp: number }>;
 }
-\`\`\`
+```
 
 ## Autor
 
-Desenvolvido por Raphael Sparda
-
+Desenvolvido por **Raphael Sparda**.
