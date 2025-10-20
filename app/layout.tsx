@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Oni",
   description: "Converse com Kitsune e Bakeneko para descobrir historias fascinantes da mitologia japonesa.",
   icons: {
-    icon: "https://raw.githubusercontent.com/raphasparda/midia/main/yang.svg",
+    icon: "/media/yang.svg",
   },
 }
 

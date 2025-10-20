@@ -59,8 +59,8 @@ function LoadingContent() {
         <img
           src={
             isBakeneko
-              ? "https://raw.githubusercontent.com/raphasparda/midia/main/yang.svg"
-              : "https://raw.githubusercontent.com/raphasparda/midia/main/ying.svg"
+              ? "/media/yang.svg"
+              : "/media/ying.svg"
           }
           alt="Simbolo yin yang"
           className="yin-yang"
