@@ -1,0 +1,37 @@
+*** Begin Patch
+*** Update File: app/api/chat/route.ts
+@@
+-    const story = selectStory(stories, analysis, normalizedMessage, detectTopic(trimmedMessage), usedTitles)
+-
+-    if (!story) {
+-      return NextResponse.json({
+-        response: composeResponse(
+-          generateFallback(trimmedMessage, detectTopic(trimmedMessage))
+-          randomFrom(conversation.askTopicPrompts),
+-        ),
+-      })
+-    }
+-
+-    return NextResponse.json({ response: buildStoryResponse(conversation, story) })
++    const topic = detectTopic(trimmedMessage)
++    const story = selectStory(stories, analysis, normalizedMessage, topic, usedTitles)
++
++    if (!story) {
++      return NextResponse.json({
++        response: composeResponse(
++          generateFallback(trimmedMessage, topic),
++          randomFrom(conversation.askTopicPrompts),
++        ),
++      })
++    }
++
++    const response = buildStoryResponse(conversation, story)
++    await track("story_selected", {
++      bot: botKey,
++      storyId: story.id,
++      title: story.title,
++      theme: story.theme,
++      topic,
++    })
++    return NextResponse.json({ response })
+*** End Patch

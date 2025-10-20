@@ -1,0 +1,369 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Identidade visual: branco, preto e vermelho */
+  --background: oklch(1 0 0); /* branco */
+  --foreground: oklch(0.145 0 0); /* preto */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.55 0.22 25); /* vermelho */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0 0); /* cinza muito claro */
+  --secondary-foreground: oklch(0.145 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.55 0.22 25); /* vermelho */
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.55 0.22 25);
+  --chart-1: oklch(0.55 0.22 25);
+  --chart-2: oklch(0.145 0 0);
+  --chart-3: oklch(0.7 0 0);
+  --chart-4: oklch(0.55 0.22 25);
+  --chart-5: oklch(0.3 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.55 0.22 25);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.145 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.55 0.22 25);
+}
+
+.dark {
+  /* Modo escuro: preto com vermelho */
+  --background: oklch(0.145 0 0); /* preto */
+  --foreground: oklch(0.985 0 0); /* branco */
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.55 0.22 25); /* vermelho */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.269 0 0); /* cinza escuro */
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.55 0.22 25); /* vermelho */
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.55 0.22 25);
+  --chart-1: oklch(0.55 0.22 25);
+  --chart-2: oklch(0.985 0 0);
+  --chart-3: oklch(0.5 0 0);
+  --chart-4: oklch(0.55 0.22 25);
+  --chart-5: oklch(0.7 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.55 0.22 25);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.55 0.22 25);
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Adicionando animação de digitação para o chat */
+@keyframes campfire {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1) translateY(-2px);
+    opacity: 1;
+  }
+}
+
+.animate-campfire {
+  animation: campfire 1.5s ease-in-out infinite;
+}
+
+.animate-campfire:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.animate-campfire:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Removido animações yin-yang-flow e float, mantendo apenas fade-in-up e slide-in */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.5s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.5s ease-out forwards;
+}
+
+/* Escondendo barra de scroll */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE e Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari e Opera */
+}
+
+.falling-leaf {
+  position: absolute;
+  top: -12vh;
+  width: clamp(16px, 2vw, 26px);
+  height: clamp(12px, 1.6vw, 20px);
+  background: radial-gradient(circle at 30% 25%, rgba(255, 232, 232, 0.95) 0%, #f85b5b 55%, #8a1010 100%);
+  border-radius: 45% 55% 35% 65%;
+  opacity: 0.75;
+  filter: drop-shadow(0 8px 12px rgba(189, 35, 35, 0.35));
+  animation-name: leaf-fall;
+  animation-duration: 16s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.falling-leaf-dark {
+  background: radial-gradient(circle at 35% 20%, rgba(255, 190, 190, 0.92) 0%, rgba(255, 88, 88, 0.78) 50%, rgba(120, 0, 0, 0.96) 100%);
+  filter: drop-shadow(0 16px 22px rgba(120, 0, 0, 0.55));
+}
+
+.falling-leaf::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 60% 60%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0.6;
+}
+
+.falling-leaf:nth-child(3n) {
+  animation-duration: 18s;
+  opacity: 0.85;
+}
+
+.falling-leaf:nth-child(4n) {
+  animation-duration: 14s;
+  border-radius: 55% 45% 60% 40%;
+}
+
+.falling-leaf:nth-child(5n) {
+  animation-duration: 20s;
+  filter: drop-shadow(0 10px 14px rgba(172, 30, 30, 0.45));
+}
+
+@keyframes leaf-fall {
+  0% {
+    transform: translate3d(0, -5vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  40% {
+    transform: translate3d(-18px, 40vh, 0) rotate(140deg);
+  }
+  70% {
+    transform: translate3d(12px, 75vh, 0) rotate(260deg);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(-6px, 110vh, 0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.falling-crimson-leaf {
+  position: absolute;
+  top: -14vh;
+  width: 48px;
+  height: 48px;
+  background:
+    radial-gradient(circle at 40% 18%, rgba(255, 240, 240, 0.9) 0%, rgba(255, 125, 125, 0.7) 45%, rgba(110, 0, 0, 0.96) 100%) no-repeat,
+    radial-gradient(circle at 62% 62%, rgba(255, 102, 102, 0.9) 0%, rgba(189, 18, 18, 0.78) 55%, rgba(90, 0, 0, 0.92) 100%) no-repeat;
+  background-size:
+    100% 100%,
+    86% 86%;
+  background-position:
+    50% 50%,
+    50% 50%;
+  border-radius: 55% 45% 65% 35%;
+  filter: drop-shadow(0 14px 24px rgba(150, 0, 0, 0.55));
+  animation-name: crimson-leaf-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: 0.82;
+  transform-origin: center;
+}
+
+.falling-crimson-leaf::before {
+  content: "";
+  position: absolute;
+  top: 18%;
+  left: 20%;
+  width: 60%;
+  height: 20%;
+  border-radius: 50%;
+  background: linear-gradient(90deg, rgba(255, 170, 170, 0.9), rgba(255, 90, 90, 0.15));
+  opacity: 0.75;
+}
+
+.falling-crimson-leaf::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  width: 6px;
+  height: 82%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(209, 45, 45, 0.95) 0%, rgba(95, 0, 0, 0.85) 100%);
+  border-radius: 12px;
+  box-shadow:
+    -8px 12px 0 -5px rgba(255, 160, 160, 0.4),
+    8px 12px 0 -5px rgba(255, 160, 160, 0.4);
+}
+
+.falling-crimson-leaf:nth-child(3n) {
+  width: 54px;
+  height: 54px;
+  border-radius: 45% 55% 40% 60%;
+  filter: drop-shadow(0 18px 28px rgba(170, 0, 0, 0.55));
+}
+
+.falling-crimson-leaf:nth-child(5n) {
+  width: 40px;
+  height: 40px;
+  opacity: 0.7;
+  filter: drop-shadow(0 10px 18px rgba(120, 0, 0, 0.5));
+}
+
+.falling-crimson-leaf:nth-child(6n) {
+  border-radius: 60% 40% 50% 50%;
+}
+
+.falling-crimson-leaf:hover {
+  opacity: 1;
+}
+
+@keyframes crimson-leaf-fall {
+  0% {
+    transform: translate3d(0, -8vh, 0) rotate(calc(var(--crimson-tilt, 0deg) + 0deg)) scale(var(--crimson-scale, 1));
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.9;
+  }
+  37% {
+    transform: translate3d(20px, 32vh, 0) rotate(calc(var(--crimson-tilt, 0deg) + 120deg)) scale(var(--crimson-scale, 1));
+  }
+  66% {
+    transform: translate3d(-24px, 70vh, 0) rotate(calc(var(--crimson-tilt, 0deg) + 240deg)) scale(var(--crimson-scale, 1.05));
+    opacity: 0.95;
+  }
+  87% {
+    transform: translate3d(14px, 102vh, 0) rotate(calc(var(--crimson-tilt, 0deg) + 320deg)) scale(var(--crimson-scale, 1));
+  }
+  100% {
+    transform: translate3d(-8px, 124vh, 0) rotate(calc(var(--crimson-tilt, 0deg) + 360deg)) scale(var(--crimson-scale, 1));
+    opacity: 0;
+  }
+}
