@@ -128,43 +128,43 @@ export function detectTopic(message: string): string {
 
 export function generateConversationalResponse(userMessage: string, topic: string): string {
   const responses: Record<string, string[]> = {
-    morte: [
-      "A morte no folclore japonês é apenas o vestíbulo do verdadeiro horror.",
-      "O limite entre vida e morte é um corredor estreito que já percorri muitas vezes.",
-    ],
-    vinganca: [
-      "Espíritos vingativos não descansam enquanto o sangue não for cobrado.",
-      "Toda vingança deixa resíduos. Posso te mostrar o cheiro deles.",
-    ],
-    horror: [
-      "O horror mais eficiente é aquele que se esconde atrás do cotidiano.",
-      "Nem tudo que se move na escuridão pretende ser visto.",
-    ],
-    fantasma: [
-      "Onryō são fantasmas que pulsam até que a dor seja satisfeita.",
-      "Há fantasmas que preferem sussurrar nos ouvidos em vez de aparecer.",
-    ],
-    yokai: [
-      "Yokai nascem de medos primordiais: fome, abandono, inveja.",
-      "Alguns yokai já foram humanos; isso os torna deliciosamente perigosos.",
-    ],
-    maldicao: [
-      "Maldições japonesas adoram famílias; alimentam-se geração após geração.",
-      "Pensou que quebrar uma maldição fosse fácil? Espere até ouvir minhas histórias.",
-    ],
-    transformacao: [
-      "Transformações são lentas, escorregadias e por isso mesmo apavorantes.",
-      "Toda transformação tem um préço; é raro alguém pagar e continuar inteiro.",
-    ],
-    hospital: [
-      "Hospitais abandonados guardam vozes presas em tubos e corredores infinitos.",
-      "Já me escondi em maçãs enferrujadas ouvindo enfermeiros que já estavam mortos.",
-    ],
-    geral: [
-      "Posso farejar segredos em cada canto da noite. Basta indicar a direção.",
-      "A noite guarda muito mais do que sonhos; quer testar?",
-    ],
-  }
+  morte: [
+    "A morte no folclore japonês é apenas o vestíbulo do verdadeiro horror.",
+    "O limite entre vida e morte é um corredor estreito que já percorri muitas vezes.",
+  ],
+  vinganca: [
+    "Espíritos vingativos não descansam enquanto o sangue não for cobrado.",
+    "Toda vingança deixa resíduos. Posso te mostrar o cheiro deles.",
+  ],
+  horror: [
+    "O horror mais eficiente é aquele que se esconde atrás do cotidiano.",
+    "Nem tudo que se move na escuridão pretende ser visto.",
+  ],
+  fantasma: [
+    "Onryō são fantasmas que pulsam até que a dor seja satisfeita.",
+    "Há fantasmas que preferem sussurrar nos ouvidos em vez de aparecer.",
+  ],
+  yokai: [
+    "Yokai nascem de medos primordiais: fome, abandono, inveja.",
+    "Alguns yokai já foram humanos; isso os torna deliciosamente perigosos.",
+  ],
+  maldicao: [
+    "Maldições japonesas adoram famílias; alimentam-se geração após geração.",
+    "Pensou que quebrar uma maldição fosse fácil? Espere até ouvir minhas histórias.",
+  ],
+  transformacao: [
+    "Transformações são lentas, escorregadias e por isso mesmo apavorantes.",
+    "Toda transformação tem um preço; é raro alguém pagar e continuar inteiro.",
+  ],
+  hospital: [
+    "Hospitais abandonados guardam vozes presas em tubos e corredores infinitos.",
+    "Já me escondi em macas enferrujadas ouvindo enfermeiros que já estavam mortos.",
+  ],
+  geral: [
+    "Posso farejar segredos em cada canto da noite. Basta indicar a direção.",
+    "A noite guarda muito mais do que sonhos; quer testar?",
+  ],
+};
 
   const topicResponses = responses[topic] || responses.geral
   return topicResponses[Math.floor(Math.random() * topicResponses.length)]

@@ -435,6 +435,19 @@ const GENERIC_TOPIC_HINTS = new Set([
   "nada",
   "tudo bem",
   "tudo bom",
+  "prazer",
+  "conhecer",
+  "conheci",
+  "conhece",
+  "conhecendo",
+  "apresentar",
+  "apresentacao",
+  "apresento",
+  "chegar",
+  "cheguei",
+  "chegando",
+  "saudacao",
+  "saudacoes",
 ])
 
 function includesAnyPhrase(text: string, phrases: string[]): boolean {
@@ -650,7 +663,7 @@ export function analyzeConversationMessage(message: string): MessageAnalysis {
         ? "medium"
         : "low"
 
-  const filteredTopicHints = Array.from(topicHints).filter((hint) => {
+  let filteredTopicHints = Array.from(topicHints).filter((hint) => {
     if (!hint || hint.length <= 3) {
       return false
     }
@@ -661,6 +674,23 @@ export function analyzeConversationMessage(message: string): MessageAnalysis {
 
     return true
   })
+
+  const courtesyIntents: Intent[] = [
+    "greeting",
+    "farewell",
+    "gratitude",
+    "compliment",
+    "apology",
+    "affirmation",
+    "negation",
+    "help",
+  ]
+  const hasStorySignal =
+    intents.includes("story_request") || intents.includes("question") || intents.includes("follow_up") || hasQuestion
+
+  if (!hasStorySignal && intents.some((intent) => courtesyIntents.includes(intent))) {
+    filteredTopicHints = []
+  }
 
   return {
     normalized,

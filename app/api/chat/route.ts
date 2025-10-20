@@ -247,6 +247,22 @@ export async function POST(req: Request) {
     const topicHints = normalizeHints(analysis.topicHints)
     const detectedTopic = setup.detectTopic(trimmedMessage)
     const usedTitles = collectUsedTitles(assistantMessages, setup.stories)
+    const hasFarewellIntent = hasIntent(analysis, "farewell")
+    const hasGratitudeIntent = hasIntent(analysis, "gratitude")
+    const hasGreetingIntent = hasIntent(analysis, "greeting")
+    const hasComplimentIntent = hasIntent(analysis, "compliment")
+    const hasStoryRequestIntent = hasIntent(analysis, "story_request")
+    const hasFollowUpIntent = hasIntent(analysis, "follow_up")
+    const hasHelpIntent = hasIntent(analysis, "help")
+    const hasNegationIntent = hasIntent(analysis, "negation")
+    const wantsStoryIntent = hasStoryRequestIntent || hasFollowUpIntent
+
+    if (hasFarewellIntent) {
+      await recordEvent("farewell", { bot, stage })
+      return NextResponse.json({
+        response: buildFarewell(setup.conversation, { grateful: hasGratitudeIntent }),
+      })
+    }
 
     if (stage === "initial") {
       const intro = buildIntroduction(setup.conversation)
@@ -274,7 +290,38 @@ export async function POST(req: Request) {
     }
 
     if (stage === "awaiting_more") {
-      if (topicHints.length > 0 || hasIntent(analysis, "story_request")) {
+      if (hasComplimentIntent && !wantsStoryIntent && !analysis.hasQuestion) {
+        await recordEvent("compliment_ack", { bot, stage })
+        return NextResponse.json({
+          response: composeResponse(
+            randomFrom(setup.conversation.gratitudeReplies),
+            randomFrom(setup.conversation.askTopicPrompts),
+          ),
+        })
+      }
+
+      if (hasGreetingIntent && !wantsStoryIntent && !analysis.hasQuestion) {
+        await recordEvent("topic_prompt", { bot, reason: "greeting_follow_up" })
+        return NextResponse.json({
+          response: composeResponse(
+            randomFrom(setup.conversation.introductionGreetings),
+            randomFrom(setup.conversation.askTopicPrompts),
+          ),
+        })
+      }
+
+      if (hasHelpIntent && !analysis.hasQuestion && !wantsStoryIntent) {
+        await recordEvent("topic_prompt", { bot, reason: "help_request" })
+        return NextResponse.json({
+          response: composeResponse(
+            randomFrom(setup.conversation.empathy),
+            randomFrom(setup.conversation.clarificationPrompts),
+            randomFrom(setup.conversation.askTopicPrompts),
+          ),
+        })
+      }
+
+      if (topicHints.length > 0 || wantsStoryIntent) {
         const topic = detectedTopic
         const story = selectStory(setup.stories, analysis, normalizedMessage, topic, usedTitles)
 
@@ -299,14 +346,16 @@ export async function POST(req: Request) {
         return NextResponse.json({ response })
       }
 
-      const wantsMore = wantsAnotherStory(analysis, normalizedMessage)
+      const wantsMore = wantsAnotherStory(analysis, normalizedMessage) || hasFollowUpIntent
       const isSatisfied =
-        hasIntent(analysis, "negation") ||
-        (hasIntent(analysis, "gratitude") && !wantsMore && topicHints.length === 0)
+        hasNegationIntent ||
+        hasFarewellIntent ||
+        (hasGratitudeIntent && !wantsMore) ||
+        (hasComplimentIntent && !wantsMore && !wantsStoryIntent)
 
       if (isSatisfied) {
         return NextResponse.json({
-          response: buildFarewell(setup.conversation, { grateful: hasIntent(analysis, "gratitude") }),
+          response: buildFarewell(setup.conversation, { grateful: hasGratitudeIntent || hasComplimentIntent }),
         })
       }
 
@@ -325,7 +374,7 @@ export async function POST(req: Request) {
       })
     }
 
-    if (hasIntent(analysis, "gratitude") && topicHints.length === 0 && !analysis.hasQuestion) {
+    if (hasGratitudeIntent && !wantsStoryIntent && !analysis.hasQuestion) {
       return NextResponse.json({
         response: composeResponse(
           randomFrom(setup.conversation.gratitudeReplies),
@@ -334,7 +383,17 @@ export async function POST(req: Request) {
       })
     }
 
-    if (hasIntent(analysis, "greeting") && topicHints.length === 0) {
+    if (hasComplimentIntent && !wantsStoryIntent && !analysis.hasQuestion) {
+      await recordEvent("compliment_ack", { bot, stage: stage === "initial" ? "initial" : stage })
+      return NextResponse.json({
+        response: composeResponse(
+          randomFrom(setup.conversation.gratitudeReplies),
+          randomFrom(setup.conversation.askTopicPrompts),
+        ),
+      })
+    }
+
+    if (hasGreetingIntent && !wantsStoryIntent && !analysis.hasQuestion) {
       return NextResponse.json({
         response: composeResponse(
           randomFrom(setup.conversation.introductionGreetings),
@@ -344,12 +403,13 @@ export async function POST(req: Request) {
       })
     }
 
-    if (hasIntent(analysis, "negation") && topicHints.length === 0 && !analysis.hasQuestion) {
+    if (hasNegationIntent && !wantsStoryIntent && !analysis.hasQuestion) {
       return NextResponse.json({ response: buildFarewell(setup.conversation) })
     }
 
     const needsClarification =
-      (topicHints.length === 0 && !hasIntent(analysis, "story_request") && !analysis.hasQuestion) ||
+      (!wantsStoryIntent && !analysis.hasQuestion && topicHints.length === 0) ||
+      hasHelpIntent ||
       hasIntent(analysis, "uncertainty") ||
       hasIntent(analysis, "confusion")
 

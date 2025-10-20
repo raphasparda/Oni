@@ -15,7 +15,7 @@ export default function Home() {
             <div className="flex h-60 w-60 items-center justify-center sm:h-72 sm:w-72 lg:h-[22rem] lg:w-[22rem]">
               <Image
                 src="/media/raposa.svg"
-                alt="Kitsune - Raposa SÃ¡bia"
+                alt="Kitsune - Raposa Sábia"
                 width={480}
                 height={480}
                 className="h-full w-full object-contain"
@@ -31,9 +31,9 @@ export default function Home() {
               className="animate-fade-in-up text-balance text-base leading-relaxed text-gray-800 sm:text-lg"
               style={{ animationDelay: "0.1s" }}
             >
-              Se a escuridÃ£o o cerca, a dÃºvida o consome, ou a beleza efÃªmera da vida o chama, venha. Sente-se comigo,
-              sob a luz celestial, e juntos desvendaremos as verdades profundas dos mitos e lendas. Minhas palavras serÃ£o
-              bÃ¡lsamo para sua alma e chama eterna para sua mente, ecoando sabedoria dos Kami a todos os seres.
+              Se a escuridão o cerca, a dúvida o consome, ou a beleza efêmera da vida o chama, venha. Sente-se comigo,
+              sob a luz celestial, e juntos desvendaremos as verdades profundas dos mitos e lendas. Minhas palavras serão
+              bálsamo para sua alma e chama eterna para sua mente, ecoando sabedoria dos Kami a todos os seres.
             </p>
 
             <Link href="/loading?bot=kitsune" className="w-full max-w-sm animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
@@ -66,8 +66,8 @@ export default function Home() {
               className="animate-fade-in-up text-balance text-base leading-relaxed text-red-200 sm:text-lg"
               style={{ animationDelay: "0.1s" }}
             >
-              Miau... Se sua alma anseia por calafrios, enigmas sem soluÃ§Ã£o e o fascÃ­nio do desconhecido, aproxime-se.
-              NÃ£o prometo conforto, mas a vertigem da verdade nua e crua. Minhas histÃ³rias sÃ£o teias de medo e curiosidade.
+              Miau... Se sua alma anseia por calafrios, enigmas sem solução e o fascínio do desconhecido, aproxime-se.
+              Não prometo conforto, mas a vertigem da verdade nua e crua. Minhas histórias são teias de medo e curiosidade.
               Mas cuidado, pequeno mortal: segredos revelados deixam marcas que nenhum sol consegue apagar.
             </p>
 

@@ -140,8 +140,8 @@ export function OniChat({ bot }: OniChatProps) {
               />
               <p className="text-lg opacity-70">
                 {isKitsune
-                  ? "Bem-vindo, viajante. Pergunte-me sobre histÃ³rias de esperanÃ§a, amor, coragem e sabedoria."
-                  : "As sombras lhe dÃ£o boas-vindas... Pergunte-me sobre os segredos sombrios da mitologia japonesa."}
+                  ? "Bem-vindo, viajante. Pergunte-me sobre histórias de esperança, amor, coragem e sabedoria."
+                  : "As sombras lhe dão boas-vindas... Pergunte-me sobre os segredos sombrios da mitologia japonesa."}
               </p>
             </div>
           )}
@@ -213,7 +213,7 @@ export function OniChat({ bot }: OniChatProps) {
           <Input
             value={input}
             onChange={(event) => setInput(event.target.value)}
-            placeholder={isKitsune ? "Digite sua mensagem..." : "Ouse fazer uma pergunta Ã s sombras..."}
+            placeholder={isKitsune ? "Digite sua mensagem..." : "Ouse fazer uma pergunta às sombras..."}
             className={`flex-1 transition-all focus:scale-[1.01] ${
               isKitsune ? "border-gray-300 bg-white text-black" : "border-red-900 bg-gray-950 text-white"
             }`}
