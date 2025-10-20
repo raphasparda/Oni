@@ -18,7 +18,7 @@ export default function Home() {
                 alt="Kitsune - Raposa Sábia"
                 width={480}
                 height={480}
-                className="h-full w-full object-contain drop-shadow-lg"
+                className="h-full w-full object-contain"
                 priority
               />
             </div>
