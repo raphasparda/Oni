@@ -56,24 +56,6 @@ Identidade minimalista com três cores:
 
 A *home* tem layout **split‑screen** vertical: lado esquerdo branco (Kitsune), lado direito preto (Bakeneko), separados por uma linha vermelha.
 
-## Scripts e testes
-
-**Restauração de acentos**
-
-```bash
-python scripts/restore_accents.py <arquivo...>
-```
-
-Percorre literais em português e restaura diacríticos com base em frequência de uso — útil ao adicionar novas histórias.
-
-**Teste de detecção de temas**
-
-```bash
-npm run test -- --run tests/topic-detection.test.ts
-```
-
-Garante que a classificação temática e o roteamento Kitsune/Bakeneko funcionem com palavras‑chave e sinônimos. Os testes (Vitest) rodam sem depender do runtime do Next.js.
-
 ## Tecnologias
 
 * Next.js 15.2.4
