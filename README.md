@@ -1,6 +1,6 @@
 # Oni
 
-Dois espíritos da mitologia japonesa conversam com você. **Oni** é uma aplicação web onde cada um desses espíritos tem voz, humor e memória próprios. A ideia é simples: colocar lado a lado luz e sombra, sabedoria e mistério, sem caricatura — só boas histórias.
+Dois espíritos da mitologia japonesa conversam com você. **Oni** é uma aplicação web onde cada um desses espíritos tem voz, humor e memória próprios. A ideia é simples: colocar lado a lado luz e sombra, sabedoria e mistério, sem caricatura só boas histórias.
 
 ## Conceito
 
